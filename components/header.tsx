@@ -1,8 +1,11 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, Phone, ChevronDown } from "lucide-react"
+import { useRouter, usePathname } from "next/navigation"
+import { Menu, X, Phone, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Logo from "@/components/logo"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -13,7 +16,7 @@ const navigation = [
   { name: "Inicio", href: "/" },
   {
     name: "Áreas de Práctica",
-    href: "#services",
+    href: "/#services",
     dropdown: [
       {
         name: "Defensas Penales",
@@ -37,14 +40,16 @@ const navigation = [
       },
     ],
   },
-  { name: "Sobre Mí", href: "#about" },
-  { name: "Testimonios", href: "#testimonials" },
+  { name: "Sobre Mí", href: "/#about" },
+  { name: "Testimonios", href: "/#testimonials" },
   { name: "Contacto", href: "/contacto" },
 ]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,6 +60,51 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Function to handle navigation to sections on the home page
+  const handleSectionNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+
+    // If we're already on the home page, just scroll to the section
+    if (pathname === "/") {
+      const sectionId = href.split("#")[1]
+      if (sectionId) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
+      } else {
+        // If no section ID (just "/"), scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      }
+    } else {
+      // If we're on another page, navigate to home page with the hash
+      router.push(href)
+    }
+
+    // Close mobile menu if open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false)
+    }
+  }
+
+  // Function to handle home navigation (logo or "Inicio" click)
+  const handleHomeNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+
+    if (pathname === "/") {
+      // If already on home page, just scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else {
+      // If on another page, navigate to home
+      router.push("/")
+    }
+
+    // Close mobile menu if open
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false)
+    }
+  }
+
   return (
     <header
       className={cn(
@@ -64,13 +114,13 @@ export default function Header() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="flex items-center gap-x-3">
+          <a href="/" onClick={handleHomeNavigation} className="flex items-center gap-x-3">
             <Logo className="h-12 w-12" />
             <div className="hidden sm:flex flex-col">
               <div className="text-lg font-serif text-gray-900">Dr. Guillermo Naum</div>
               <div className="text-sm text-primary/90 font-medium tracking-wide">ABOGADO ESPECIALISTA</div>
             </div>
-          </Link>
+          </a>
         </div>
         <div className="flex lg:hidden">
           <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(true)} className="text-gray-700">
@@ -99,6 +149,24 @@ export default function Header() {
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
+            ) : item.name === "Inicio" ? (
+              <a
+                key={item.name}
+                href="/"
+                onClick={handleHomeNavigation}
+                className="text-sm font-medium leading-6 text-gray-900 hover:text-primary transition-colors cursor-pointer"
+              >
+                {item.name}
+              </a>
+            ) : item.href.includes("#") ? (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleSectionNavigation(e, item.href)}
+                className="text-sm font-medium leading-6 text-gray-900 hover:text-primary transition-colors cursor-pointer"
+              >
+                {item.name}
+              </a>
             ) : (
               <Link
                 key={item.name}
@@ -118,7 +186,9 @@ export default function Header() {
             <Phone className="mr-2 h-4 w-4" />
             (11) 2345-6789
           </a>
-          <Button className="shadow-md hover:shadow-lg transition-shadow">Consulta Gratuita</Button>
+          <Button className="shadow-md hover:shadow-lg transition-shadow" asChild>
+            <Link href="/contacto">Consulta Gratuita</Link>
+          </Button>
         </div>
       </nav>
       {/* Mobile menu */}
@@ -141,16 +211,23 @@ export default function Header() {
               className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
             >
               <div className="flex items-center justify-between mb-6">
-                <Link href="/" className="flex items-center gap-x-3" onClick={() => setMobileMenuOpen(false)}>
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    handleHomeNavigation(e)
+                    setMobileMenuOpen(false)
+                  }}
+                  className="flex items-center gap-x-3"
+                >
                   <Logo className="h-10 w-10" />
                   <div className="flex flex-col">
                     <div className="text-base font-serif text-gray-900">Dr. Guillermo Naum</div>
                     <div className="text-xs text-primary/90 font-medium tracking-wide">ABOGADO ESPECIALISTA</div>
                   </div>
-                </Link>
+                </a>
                 <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} className="text-gray-700">
                   <span className="sr-only">Cerrar menú</span>
-                  <Menu className="h-6 w-6" aria-hidden="true" />
+                  <X className="h-6 w-6" aria-hidden="true" />
                 </Button>
               </div>
               <div className="flow-root">
@@ -163,39 +240,74 @@ export default function Header() {
                             <div className="font-medium text-gray-900 mb-2">{item.name}</div>
                             <div className="ml-4 space-y-2">
                               {item.dropdown.map((dropdownItem) => (
-                                <Link
-                                  key={dropdownItem.name}
-                                  href={dropdownItem.href}
-                                  className="block rounded-lg py-2 pl-3 pr-3 text-sm text-gray-900 hover:bg-gray-50"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                >
-                                  <div className="font-medium">{dropdownItem.name}</div>
-                                  <div className="text-xs text-gray-500 mt-0.5">{dropdownItem.description}</div>
-                                </Link>
+                                <motion.div key={dropdownItem.name} whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
+                                  <Link
+                                    href={dropdownItem.href}
+                                    className="block rounded-lg py-2 pl-3 pr-3 text-sm text-gray-900 hover:bg-gray-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                  >
+                                    <div className="font-medium">{dropdownItem.name}</div>
+                                    <div className="text-xs text-gray-500 mt-0.5">{dropdownItem.description}</div>
+                                  </Link>
+                                </motion.div>
                               ))}
                             </div>
                           </>
+                        ) : item.name === "Inicio" ? (
+                          <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
+                            <a
+                              href="/"
+                              onClick={(e) => {
+                                handleHomeNavigation(e)
+                                setMobileMenuOpen(false)
+                              }}
+                              className="block rounded-lg py-2 pl-3 pr-3 text-base font-medium text-gray-900 hover:bg-gray-50 cursor-pointer"
+                            >
+                              {item.name}
+                            </a>
+                          </motion.div>
+                        ) : item.href.includes("#") ? (
+                          <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
+                            <a
+                              href={item.href}
+                              onClick={(e) => {
+                                handleSectionNavigation(e, item.href)
+                                setMobileMenuOpen(false)
+                              }}
+                              className="block rounded-lg py-2 pl-3 pr-3 text-base font-medium text-gray-900 hover:bg-gray-50 cursor-pointer"
+                            >
+                              {item.name}
+                            </a>
+                          </motion.div>
                         ) : (
-                          <Link
-                            href={item.href}
-                            className="block rounded-lg py-2 pl-3 pr-3 text-base font-medium text-gray-900 hover:bg-gray-50"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.name}
-                          </Link>
+                          <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
+                            <Link
+                              href={item.href}
+                              className="block rounded-lg py-2 pl-3 pr-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.name}
+                            </Link>
+                          </motion.div>
                         )}
                       </div>
                     ))}
                   </div>
                   <div className="py-6">
-                    <a
-                      href="tel:+5491123456789"
-                      className="flex items-center mb-4 -mx-3 rounded-lg px-3 py-2.5 text-base font-medium text-gray-900 hover:bg-gray-50"
-                    >
-                      <Phone className="mr-3 h-5 w-5 text-gray-400" />
-                      (11) 2345-6789
-                    </a>
-                    <Button className="w-full shadow-md">Consulta Gratuita</Button>
+                    <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
+                      <a
+                        href="tel:+5491123456789"
+                        className="flex items-center mb-4 -mx-3 rounded-lg px-3 py-2.5 text-base font-medium text-gray-900 hover:bg-gray-50"
+                      >
+                        <Phone className="mr-3 h-5 w-5 text-gray-400" />
+                        (11) 2345-6789
+                      </a>
+                    </motion.div>
+                    <Button className="w-full shadow-md" asChild>
+                      <Link href="/contacto" onClick={() => setMobileMenuOpen(false)}>
+                        Consulta Gratuita
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>

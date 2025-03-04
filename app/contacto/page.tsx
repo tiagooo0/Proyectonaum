@@ -1,7 +1,12 @@
+"use client"
+
 import Header from "@/components/header"
 import { Card, CardContent } from "@/components/ui/card"
 import { Instagram, Facebook, Mail, Phone, MapPin, MessageCircle } from "lucide-react"
 import Link from "next/link"
+import { AnimatedText } from "@/components/ui/animated-text"
+import { FadeIn } from "@/components/ui/fade-in"
+import { motion } from "framer-motion"
 
 const socialLinks = [
   {
@@ -51,7 +56,7 @@ const contactInfo = [
 
 export default function ContactPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-white overflow-fix">
       <Header />
       <main className="relative isolate min-h-screen">
         {/* Background */}
@@ -59,63 +64,74 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white" />
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-32 sm:py-40 lg:px-8">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h1 className="text-3xl font-serif tracking-tight text-gray-900 sm:text-5xl">Contacto</h1>
-            <p className="mt-6 text-xl leading-8 text-gray-600">
-              Elija el medio de comunicación que prefiera para contactarnos. Estamos aquí para ayudarle.
-            </p>
+            <AnimatedText
+              text="Contacto"
+              className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl font-serif justify-start"
+            />
+            <FadeIn delay={0.2}>
+              <p className="mt-6 text-xl leading-8 text-gray-600">
+                Elija el medio de comunicación que prefiera para contactarnos. Estamos aquí para ayudarle.
+              </p>
+            </FadeIn>
           </div>
 
-          <div className="mx-auto mt-16 grid max-w-2xl gap-8 lg:mx-0 lg:max-w-none">
-            {/* Contact Information */}
-            <div className="flex flex-wrap gap-4">
-              {contactInfo.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="inline-flex items-center gap-x-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200"
-                >
-                  <item.icon className="h-5 w-5 text-gray-500" />
-                  {item.value}
-                </Link>
-              ))}
-            </div>
+          <FadeIn delay={0.3}>
+            <div className="mx-auto mt-16 grid max-w-2xl gap-8 lg:mx-0 lg:max-w-none">
+              {/* Contact Information */}
+              <div className="flex flex-wrap gap-4">
+                {contactInfo.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="inline-flex items-center gap-x-2 rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200"
+                  >
+                    <item.icon className="h-5 w-5 text-gray-500" />
+                    {item.value}
+                  </Link>
+                ))}
+              </div>
 
-            {/* Social Media Cards */}
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {socialLinks.map((item) => (
-                <Link key={item.name} href={item.href} target="_blank" rel="noopener noreferrer">
-                  <Card className="group overflow-hidden">
-                    <CardContent className="p-6">
-                      <div
-                        className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${item.color} text-white shadow-lg transition-transform group-hover:scale-110`}
-                      >
-                        <item.icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="font-serif text-xl text-gray-900">{item.name}</h3>
-                      <p className="mt-2 text-sm text-gray-600">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
+              {/* Social Media Cards */}
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {socialLinks.map((item, index) => (
+                  <FadeIn key={item.name} delay={0.1 * index}>
+                    <motion.div whileHover={{ y: -8 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                      <Link href={item.href} target="_blank" rel="noopener noreferrer">
+                        <Card className="group overflow-hidden">
+                          <CardContent className="p-6">
+                            <div
+                              className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${item.color} text-white shadow-lg transition-transform group-hover:scale-110`}
+                            >
+                              <item.icon className="h-6 w-6" />
+                            </div>
+                            <h3 className="font-serif text-xl text-gray-900">{item.name}</h3>
+                            <p className="mt-2 text-sm text-gray-600">{item.description}</p>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    </motion.div>
+                  </FadeIn>
+                ))}
+              </div>
 
-            {/* Office Hours */}
-            <div className="mt-8 rounded-2xl bg-gray-100 p-8">
-              <h3 className="text-xl font-serif text-gray-900">Horario de Atención</h3>
-              <dl className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <dt className="font-medium text-gray-900">Lunes a Viernes</dt>
-                  <dd className="text-gray-600">9:00 a 18:00</dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-gray-900">Sábados</dt>
-                  <dd className="text-gray-600">10:00 a 13:00</dd>
-                </div>
-              </dl>
+              {/* Office Hours */}
+              <div className="mt-8 rounded-2xl bg-gray-100 p-8">
+                <h3 className="text-xl font-serif text-gray-900">Horario de Atención</h3>
+                <dl className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <dt className="font-medium text-gray-900">Lunes a Viernes</dt>
+                    <dd className="text-gray-600">9:00 a 18:00</dd>
+                  </div>
+                  <div>
+                    <dt className="font-medium text-gray-900">Sábados</dt>
+                    <dd className="text-gray-600">10:00 a 13:00</dd>
+                  </div>
+                </dl>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </main>
     </div>

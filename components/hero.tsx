@@ -30,7 +30,7 @@ const features = [
 
 export default function Hero() {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white overflow-hidden">
       <Header />
       <div className="relative isolate">
         {/* Background */}
@@ -54,7 +54,7 @@ export default function Hero() {
         </div>
 
         {/* Content */}
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
             <FadeIn>
               <div className="flex">
@@ -76,31 +76,36 @@ export default function Hero() {
             <div className="mt-10">
               <AnimatedText
                 text="Experiencia y Excelencia en Derecho"
-                className="max-w-lg text-4xl font-serif tracking-tight text-gray-900 sm:text-6xl"
+                className="max-w-lg text-3xl md:text-4xl font-serif tracking-tight text-gray-900 sm:text-6xl"
               />
               <FadeIn delay={0.5}>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
+                <p className="mt-6 text-base md:text-lg leading-8 text-gray-600">
                   Más de 15 años brindando asesoramiento legal especializado en defensas penales, laborales, sucesiones
                   y divorcios. Compromiso con resultados y atención personalizada.
                 </p>
               </FadeIn>
               <FadeIn delay={0.7}>
-                <div className="mt-10 flex items-center gap-x-6">
+                <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-x-6">
                   <Button
                     size="lg"
-                    className="shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                    className="w-full sm:w-auto shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
                     asChild
                   >
                     <Link href="#contact">Solicitar Consulta</Link>
                   </Button>
-                  <Button variant="outline" size="lg" className="transition-all duration-300 hover:scale-105" asChild>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto transition-all duration-300 hover:scale-105"
+                    asChild
+                  >
                     <Link href="#services">Conocer Servicios</Link>
                   </Button>
                 </div>
               </FadeIn>
               <FadeIn delay={0.9}>
                 <div className="mt-10 border-t border-gray-900/10 pt-10">
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-gray-900 sm:grid-cols-4">
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-6 text-sm sm:text-base font-semibold leading-7 text-gray-900 sm:grid-cols-4">
                     {features.map((feature) => (
                       <motion.div
                         key={feature.name}
