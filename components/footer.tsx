@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import { Facebook, Instagram, MessageCircle, Mail } from "lucide-react"
 
 const footerNavigation = {
   servicios: [
@@ -11,12 +11,10 @@ const footerNavigation = {
   estudio: [
     { name: "Sobre Nosotros", href: "/#about" },
     { name: "Nuestro Equipo", href: "/#team" },
-    { name: "Blog", href: "/blog" },
   ],
   recursos: [
     { name: "Preguntas Frecuentes", href: "/#faq" },
-    { name: "Guías Legales", href: "/recursos/guias-legales" },
-    { name: "Glosario Legal", href: "/recursos/glosario" },
+    
   ],
   legal: [
     { name: "Política de Privacidad", href: "/legal/privacidad" },
@@ -26,25 +24,31 @@ const footerNavigation = {
   social: [
     {
       name: "Facebook",
-      href: "https://facebook.com/guillermonautm",
+      href: "https://www.facebook.com/profile.php?id=61573963161778",
       icon: Facebook,
     },
     {
       name: "Instagram",
-      href: "https://instagram.com/guillermonautm",
+      href: "https://www.instagram.com/estudiojuridiconaum/",
       icon: Instagram,
     },
     {
-      name: "Twitter",
-      href: "https://twitter.com/guillermonautm",
-      icon: Twitter,
+      name: "WhatsApp",
+      href: "https://shorturl.at/tTnAZ",
+      icon: MessageCircle,
     },
     {
-      name: "LinkedIn",
-      href: "https://linkedin.com/in/guillermonautm",
-      icon: Linkedin,
+      name: "Email",
+      href: "mailto:gnaum@coop5.com.ar",
+      icon: Mail,
     },
   ],
+  contacto: {
+    direccion: "Calle Tucumán 747, Jesús María, Córdoba",
+    telefono: "+54 9 3525 53-7118",
+    email: "gnaum@coop5.com.ar",
+    horario: "Lunes a Viernes: 9:00 a 12:00 y 17:00 a 20:00",
+  },
 }
 
 export default function Footer() {
@@ -73,6 +77,11 @@ export default function Footer() {
                   <item.icon className="h-6 w-6" />
                 </a>
               ))}
+            </div>
+            <div className="text-sm">
+              <p className="text-gray-400">{footerNavigation.contacto.direccion}</p>
+              <p className="text-gray-400">{footerNavigation.contacto.telefono}</p>
+              <p className="text-gray-400">{footerNavigation.contacto.horario}</p>
             </div>
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">

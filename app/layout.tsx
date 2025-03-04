@@ -19,10 +19,11 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Dr. Guillermo Naum | Abogado Especialista",
+  title: "Estudio Jurídico Naum",
   description:
-    "Abogado especializado en defensas penales, defensas laborales, sucesiones y divorcios exprés. Asesoramiento legal personalizado y efectivo.",
-    generator: 'v0.dev'
+    "Abogado especializado en defensas penales,abogado,abogado jesus maria,  jesus maria, colonia caroya, abogado colonia caroya defensas laborales, sucesiones y divorcios exprés. Asesoramiento legal personalizado y efectivo.",
+    icons: "/naumLogo.png",
+
 }
 
 export const viewport: Viewport = {

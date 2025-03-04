@@ -13,28 +13,28 @@ const socialLinks = [
     name: "WhatsApp",
     description: "Consultas rápidas y directas",
     icon: MessageCircle,
-    href: "https://wa.me/5491123456789",
+    href: "https://shorturl.at/tTnAZ",
     color: "bg-[#25D366]",
   },
   {
     name: "Instagram",
-    description: "Siga nuestras actualizaciones",
+    description: "@estudiojuridiconaum",
     icon: Instagram,
-    href: "https://instagram.com/guillermonaum",
+    href: "https://www.instagram.com/estudiojuridiconaum/",
     color: "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500",
   },
   {
     name: "Facebook",
-    description: "Conéctese con nosotros",
+    description: "Estudio Jurídico Naum",
     icon: Facebook,
-    href: "https://facebook.com/guillermonaum",
+    href: "https://www.facebook.com/profile.php?id=61573963161778",
     color: "bg-[#1877F2]",
   },
   {
     name: "Email",
-    description: "Consultas detalladas",
+    description: "gnaum@coop5.com.ar",
     icon: Mail,
-    href: "mailto:info@guillermonautm.com",
+    href: "mailto:gnaum@coop5.com.ar",
     color: "bg-gray-800",
   },
 ]
@@ -42,15 +42,15 @@ const socialLinks = [
 const contactInfo = [
   {
     name: "Teléfono",
-    value: "(11) 2345-6789",
+    value: "+54 9 3525 53-7118",
     icon: Phone,
-    href: "tel:+5491123456789",
+    href: "tel:+5493525537118",
   },
   {
     name: "Dirección",
-    value: "Av. Corrientes 1234, CABA",
+    value: "Calle Tucumán 747, Jesús María",
     icon: MapPin,
-    href: "https://maps.google.com",
+    href: "https://maps.google.com/?q=Calle+Tucumán+747,+Jesús+María,+Córdoba,+Argentina",
   },
 ]
 
@@ -122,11 +122,11 @@ export default function ContactPage() {
                 <dl className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <dt className="font-medium text-gray-900">Lunes a Viernes</dt>
-                    <dd className="text-gray-600">9:00 a 18:00</dd>
+                    <dd className="text-gray-600">9:00 a 12:00 y 17:00 a 20:00</dd>
                   </div>
                   <div>
-                    <dt className="font-medium text-gray-900">Sábados</dt>
-                    <dd className="text-gray-600">10:00 a 13:00</dd>
+                    <dt className="font-medium text-gray-900">Sábados y Domingos</dt>
+                    <dd className="text-gray-600">Cerrado</dd>
                   </div>
                 </dl>
               </div>

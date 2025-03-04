@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter, usePathname } from "next/navigation"
-import { Menu, X, Phone, ChevronDown } from "lucide-react"
+import { Menu, X, Phone, ChevronDown, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Logo from "@/components/logo"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -118,7 +118,7 @@ export default function Header() {
             <Logo className="h-12 w-12" />
             <div className="hidden sm:flex flex-col">
               <div className="text-lg font-serif text-gray-900">Dr. Guillermo Naum</div>
-              <div className="text-sm text-primary/90 font-medium tracking-wide">ABOGADO ESPECIALISTA</div>
+              <div className="text-sm text-primary/90 font-medium tracking-wide">ABOGADO</div>
             </div>
           </a>
         </div>
@@ -180,14 +180,22 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6">
           <a
-            href="tel:+5491123456789"
+            href="tel:+5493525537118"
             className="flex items-center text-sm font-medium text-gray-900 hover:text-primary transition-colors"
           >
             <Phone className="mr-2 h-4 w-4" />
-            (11) 2345-6789
+            +54 9 3525 53-7118
           </a>
           <Button className="shadow-md hover:shadow-lg transition-shadow" asChild>
-            <Link href="/contacto">Consulta Gratuita</Link>
+            <a
+              href="https://shorturl.at/tTnAZ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2"
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
           </Button>
         </div>
       </nav>
@@ -222,7 +230,7 @@ export default function Header() {
                   <Logo className="h-10 w-10" />
                   <div className="flex flex-col">
                     <div className="text-base font-serif text-gray-900">Dr. Guillermo Naum</div>
-                    <div className="text-xs text-primary/90 font-medium tracking-wide">ABOGADO ESPECIALISTA</div>
+                    <div className="text-xs text-primary/90 font-medium tracking-wide">ABOGADO</div>
                   </div>
                 </a>
                 <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} className="text-gray-700">
@@ -296,17 +304,23 @@ export default function Header() {
                   <div className="py-6">
                     <motion.div whileHover={{ x: 4 }} whileTap={{ scale: 0.98 }}>
                       <a
-                        href="tel:+5491123456789"
+                        href="tel:+5493525537118"
                         className="flex items-center mb-4 -mx-3 rounded-lg px-3 py-2.5 text-base font-medium text-gray-900 hover:bg-gray-50"
                       >
                         <Phone className="mr-3 h-5 w-5 text-gray-400" />
-                        (11) 2345-6789
+                        +54 9 3525 53-7118
                       </a>
                     </motion.div>
                     <Button className="w-full shadow-md" asChild>
-                      <Link href="/contacto" onClick={() => setMobileMenuOpen(false)}>
-                        Consulta Gratuita
-                      </Link>
+                      <a
+                        href="https://shorturl.at/tTnAZ"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <MessageCircle className="h-5 w-5" />
+                        WhatsApp
+                      </a>
                     </Button>
                   </div>
                 </div>

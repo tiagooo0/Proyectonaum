@@ -80,7 +80,7 @@ export default function Hero() {
               />
               <FadeIn delay={0.5}>
                 <p className="mt-6 text-base md:text-lg leading-8 text-gray-600">
-                  Más de 15 años brindando asesoramiento legal especializado en defensas penales, laborales, sucesiones
+                  Más de 37 años brindando asesoramiento legal especializado en defensas penales, laborales, sucesiones
                   y divorcios. Compromiso con resultados y atención personalizada.
                 </p>
               </FadeIn>
@@ -131,7 +131,7 @@ export default function Hero() {
               >
                 <img
                   className="relative mx-auto w-full max-w-lg rounded-2xl shadow-xl ring-1 ring-gray-400/10 lg:max-w-md"
-                  src="/placeholder.svg?height=600&width=500"
+                  src="/imgDatos.png"
                   alt="Dr. Guillermo Naum en su oficina"
                 />
                 {/* Decorative elements */}

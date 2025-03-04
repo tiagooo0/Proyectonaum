@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { MessageCircle, Phone } from "lucide-react"
 
 export default function CTA() {
   return (
@@ -11,9 +11,17 @@ export default function CTA() {
             Agende una consulta con nuestro equipo legal para explorar cómo podemos ayudarle a resolver sus desafíos
             legales.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
             <Button size="lg" variant="secondary" asChild>
-              <Link href="#contact">Agendar una Consulta</Link>
+              <a
+                href="https://shorturl.at/tTnAZ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Contactar por WhatsApp
+              </a>
             </Button>
             <Button
               size="lg"
@@ -21,7 +29,10 @@ export default function CTA() {
               className="bg-transparent text-white border-white hover:bg-white/10"
               asChild
             >
-              <Link href="tel:+5491123456789">Llamar: (11) 2345-6789</Link>
+              <a href="tel:+5493525537118" className="flex items-center gap-2">
+                <Phone className="h-5 w-5" />
+                Llamar: +54 9 3525 53-7118
+              </a>
             </Button>
           </div>
         </div>

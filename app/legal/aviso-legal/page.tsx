@@ -48,8 +48,7 @@ export default function AvisoLegalPage() {
               <h2 className="text-2xl font-serif text-gray-900 mt-8 mb-4">Jurisdicción</h2>
               <p>
                 Este aviso legal se rige por las leyes de la República Argentina. Cualquier disputa relacionada con este
-                sitio web estará sujeta a la jurisdicción exclusiva de los tribunales de la Ciudad Autónoma de Buenos
-                Aires.
+                sitio web estará sujeta a la jurisdicción exclusiva de los tribunales de la Ciudad de Cordoba.
               </p>
             </div>
           </div>

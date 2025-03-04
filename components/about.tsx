@@ -9,7 +9,7 @@ const features = [
   {
     name: "Experiencia Comprobada",
     description:
-      "Más de 15 años de trayectoria profesional en diversas áreas del derecho, con resultados favorables para mis clientes.",
+      "Más de 37 años de trayectoria profesional en diversas áreas del derecho, con resultados favorables para mis clientes.",
   },
   {
     name: "Comunicación Clara",

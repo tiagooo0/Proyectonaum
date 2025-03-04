@@ -1,6 +1,6 @@
 "use client"
 
-import { MessageCircle, Instagram, Facebook, Mail, Phone, Linkedin, MapPin, Clock } from "lucide-react"
+import { MessageCircle, Instagram, Facebook, Mail, Phone, MapPin, Clock } from "lucide-react"
 import { motion } from "framer-motion"
 import { FadeIn } from "@/components/ui/fade-in"
 import { AnimatedText } from "@/components/ui/animated-text"
@@ -10,49 +10,41 @@ const socialLinks = [
     name: "WhatsApp",
     description: "Respuesta inmediata",
     icon: MessageCircle,
-    href: "https://wa.me/5491123456789",
+    href: "https://shorturl.at/tTnAZ",
     color: "bg-[#25D366]",
     hoverColor: "hover:bg-[#20BA5A]",
   },
   {
     name: "Instagram",
-    description: "@guillermonautm",
+    description: "@estudiojuridiconaum",
     icon: Instagram,
-    href: "https://instagram.com/guillermonautm",
+    href: "https://www.instagram.com/estudiojuridiconaum/",
     color: "bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500",
     hoverColor: "hover:from-purple-600 hover:via-pink-600 hover:to-orange-600",
   },
   {
     name: "Facebook",
-    description: "/guillermonautm",
+    description: "Estudio Jurídico Naum",
     icon: Facebook,
-    href: "https://facebook.com/guillermonautm",
+    href: "https://www.facebook.com/profile.php?id=61573963161778",
     color: "bg-[#1877F2]",
     hoverColor: "hover:bg-[#0C63D4]",
   },
   {
     name: "Email",
-    description: "info@guillermonautm.com",
+    description: "gnaum@coop5.com.ar",
     icon: Mail,
-    href: "mailto:info@guillermonautm.com",
+    href: "mailto:gnaum@coop5.com.ar",
     color: "bg-primary",
     hoverColor: "hover:bg-primary/90",
   },
   {
     name: "Teléfono",
-    description: "(11) 2345-6789",
+    description: "+54 9 3525 53-7118",
     icon: Phone,
-    href: "tel:+5491123456789",
+    href: "tel:+5493525537118",
     color: "bg-gray-900",
     hoverColor: "hover:bg-gray-800",
-  },
-  {
-    name: "LinkedIn",
-    description: "/in/guillermonautm",
-    icon: Linkedin,
-    href: "https://linkedin.com/in/guillermonautm",
-    color: "bg-[#0A66C2]",
-    hoverColor: "hover:bg-[#004182]",
   },
 ]
 
@@ -111,8 +103,9 @@ export default function Contact() {
                 <div>
                   <h4 className="text-base font-medium text-gray-900">Dirección</h4>
                   <p className="mt-1 text-gray-600">
-                    Av. Corrientes 1234, Piso 5, Oficina B<br />
-                    Ciudad Autónoma de Buenos Aires, C1043AAZ
+                    Calle Tucumán 747
+                    <br />
+                    Jesús María, Córdoba
                   </p>
                 </div>
               </motion.div>
@@ -124,7 +117,7 @@ export default function Contact() {
                 <Phone className="h-6 w-6 text-primary shrink-0" />
                 <div>
                   <h4 className="text-base font-medium text-gray-900">Teléfono</h4>
-                  <p className="mt-1 text-gray-600">(11) 2345-6789</p>
+                  <p className="mt-1 text-gray-600">+54 9 3525 53-7118</p>
                 </div>
               </motion.div>
               <motion.div
@@ -135,7 +128,7 @@ export default function Contact() {
                 <Mail className="h-6 w-6 text-primary shrink-0" />
                 <div>
                   <h4 className="text-base font-medium text-gray-900">Correo Electrónico</h4>
-                  <p className="mt-1 text-gray-600">info@guillermonautm.com</p>
+                  <p className="mt-1 text-gray-600">gnaum@coop5.com.ar</p>
                 </div>
               </motion.div>
               <motion.div
@@ -147,11 +140,9 @@ export default function Contact() {
                 <div>
                   <h4 className="text-base font-medium text-gray-900">Horario de Atención</h4>
                   <p className="mt-1 text-gray-600">
-                    Lunes a Viernes: 9:00 a 18:00
+                    Lunes a Viernes: 9:00 a 12:00 y 17:00 a 20:00
                     <br />
-                    Sábados: 10:00 a 13:00
-                    <br />
-                    Domingos: Cerrado
+                    Sábados y Domingos: Cerrado
                   </p>
                 </div>
               </motion.div>
