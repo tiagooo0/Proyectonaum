@@ -14,7 +14,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    unoptimized: false,
+    formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 1080, 1920],
   },
   experimental: {
     webpackBuildWorker: true,

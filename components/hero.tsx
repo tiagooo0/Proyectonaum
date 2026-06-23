@@ -2,8 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import Header from "@/components/header"
-import WhatsAppFAB from "@/components/whatsapp-fab"
 import { ArrowRight, Scale, Briefcase, FileText, Heart } from "lucide-react"
 import { motion } from "framer-motion"
 import { AnimatedText } from "@/components/ui/animated-text"
@@ -31,7 +29,7 @@ const features = [
 export default function Hero() {
   return (
     <div className="relative bg-white overflow-hidden">
-      <Header />
+      <h1 className="sr-only">Estudio Jurídico Naum | Dr. Guillermo Naum - Abogado en Jesús María, Córdoba</h1>
       <div className="relative isolate">
         {/* Background */}
         <div className="absolute inset-0 -z-10">
@@ -57,21 +55,19 @@ export default function Hero() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
             <FadeIn>
-              <div className="flex">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="relative flex items-center gap-x-4 rounded-full px-4 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
-                >
-                  <span className="font-semibold text-primary">Consulta sin cargo</span>
-                  <span className="h-4 w-px bg-gray-900/10" aria-hidden="true" />
-                  <a href="#contact" className="flex items-center gap-x-1">
-                    Contactar
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                </motion.div>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="relative flex items-center gap-x-4 rounded-full px-4 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+              >
+                <span className="font-semibold text-primary">Consulta sin cargo</span>
+                <span className="h-4 w-px bg-gray-900/10" aria-hidden="true" />
+                <a href="#contact" className="flex items-center gap-x-1">
+                  Contactar
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </motion.div>
             </FadeIn>
             <div className="mt-10">
               <AnimatedText
@@ -80,18 +76,27 @@ export default function Hero() {
               />
               <FadeIn delay={0.5}>
                 <p className="mt-6 text-base md:text-lg leading-8 text-gray-600">
-                  Más de 37 años brindando asesoramiento legal especializado en defensas penales, laborales, sucesiones
-                  y divorcios. Compromiso con resultados y atención personalizada.
+                  Más de 37 años brindando asesoramiento legal especializado en{" "}
+                  <strong className="text-gray-900">defensas penales</strong>,{" "}
+                  <strong className="text-gray-900">defensas laborales</strong>,{" "}
+                  <strong className="text-gray-900">sucesiones</strong> y{" "}
+                  <strong className="text-gray-900">divorcios exprés</strong> en{" "}
+                  <strong className="text-gray-900">Jesús María</strong>,{" "}
+                  <strong className="text-gray-900">Colonia Caroya</strong> y toda la provincia de{" "}
+                  <strong className="text-gray-900">Córdoba</strong>.
                 </p>
               </FadeIn>
               <FadeIn delay={0.7}>
                 <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-x-6">
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+                    className="w-full sm:w-auto shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 group"
                     asChild
                   >
-                    <Link href="#contact">Solicitar Consulta</Link>
+                    <Link href="#contact">
+                      Solicitar Consulta
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
                   </Button>
                   <Button
                     variant="outline"
@@ -110,7 +115,7 @@ export default function Hero() {
                       <motion.div
                         key={feature.name}
                         className="flex items-center gap-x-3"
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.05, x: 4 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
                         <feature.icon className="h-5 w-5 text-primary" />
@@ -129,30 +134,36 @@ export default function Hero() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <img
-                  className="relative mx-auto w-full max-w-lg rounded-2xl shadow-xl ring-1 ring-gray-400/10 lg:max-w-md"
-                  src="/imgDatos.png"
-                  alt="Dr. Guillermo Naum en su oficina"
-                />
-                {/* Decorative elements */}
+                <div className="relative rounded-2xl shadow-2xl ring-1 ring-gray-400/10 overflow-hidden">
+                  <img
+                    className="w-full h-auto"
+                    src="/imgDatos.png"
+                    alt="Dr. Guillermo Naum, abogado en Jesús María Córdoba, en su oficina del Estudio Jurídico Naum"
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 0.7 }}
+                  animate={{ scale: 1, opacity: 0.5 }}
                   transition={{ duration: 1 }}
-                  className="absolute -top-4 -right-4 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl"
+                  className="absolute -top-4 -right-4 w-72 h-72 bg-primary/5 rounded-full mix-blend-multiply filter blur-3xl -z-10"
                 />
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 0.7 }}
+                  animate={{ scale: 1, opacity: 0.5 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="absolute -bottom-4 -left-4 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl"
+                  className="absolute -bottom-4 -left-4 w-72 h-72 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl -z-10"
                 />
               </motion.div>
             </FadeIn>
           </div>
         </div>
       </div>
-      <WhatsAppFAB />
     </div>
   )
 }

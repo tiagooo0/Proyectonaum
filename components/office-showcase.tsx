@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { FadeIn } from "@/components/ui/fade-in"
 import { AnimatedText } from "@/components/ui/animated-text"
 import { ParallaxScroll } from "@/components/ui/parallax-scroll"
+import { Building2, Users } from "lucide-react"
 
 export default function OfficeShowcase() {
   return (
@@ -26,11 +27,12 @@ export default function OfficeShowcase() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 className="relative aspect-[4/3] overflow-hidden rounded-2xl group"
               >
-                <img
-                  src="/placeholder.svg?height=600&width=800"
-                  alt="Recepción del estudio jurídico"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-gray-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <Building2 className="h-20 w-20 text-primary/40 mx-auto mb-4" />
+                    <p className="text-lg font-medium text-gray-400">Recepción</p>
+                  </div>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100">
                   <h3 className="text-xl font-semibold text-white">Recepción</h3>
@@ -48,11 +50,12 @@ export default function OfficeShowcase() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 className="relative aspect-[4/3] overflow-hidden rounded-2xl group"
               >
-                <img
-                  src="/placeholder.svg?height=600&width=800"
-                  alt="Sala de reuniones"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-primary/5 to-gray-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <Users className="h-20 w-20 text-primary/40 mx-auto mb-4" />
+                    <p className="text-lg font-medium text-gray-400">Sala de Reuniones</p>
+                  </div>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100">
                   <h3 className="text-xl font-semibold text-white">Sala de Reuniones</h3>

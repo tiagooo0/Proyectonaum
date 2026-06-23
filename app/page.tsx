@@ -14,7 +14,6 @@ import { scrollToSection } from "@/lib/scroll-to-section"
 
 export default function Home() {
   useEffect(() => {
-    // Scroll to section if hash is present in URL
     scrollToSection()
   }, [])
 

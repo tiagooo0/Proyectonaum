@@ -1,9 +1,6 @@
-import Header from "@/components/header"
-
 export default function TerminosPage() {
   return (
     <div className="bg-white">
-      <Header />
       <main className="relative isolate min-h-screen">
         <div className="absolute inset-0 -z-10 h-full w-full bg-white">
           <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white" />

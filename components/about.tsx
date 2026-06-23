@@ -1,4 +1,4 @@
-import { CheckCircle } from "lucide-react"
+import { CheckCircle, Award, Users, BookOpen, Scale } from "lucide-react"
 
 const features = [
   {
@@ -21,6 +21,13 @@ const features = [
     description:
       "Me comprometo plenamente con cada caso, dedicando el tiempo y recursos necesarios para lograr los mejores resultados posibles.",
   },
+]
+
+const stats = [
+  { name: "Años de Experiencia", value: "37+", icon: Award },
+  { name: "Casos Exitosos", value: "500+", icon: Scale },
+  { name: "Clientes Satisfechos", value: "400+", icon: Users },
+  { name: "Áreas de Práctica", value: "4", icon: BookOpen },
 ]
 
 export default function About() {
@@ -62,11 +69,26 @@ export default function About() {
                 }}
               />
             </div>
-            <img
-              src="/placeholder.svg?height=1080&width=1920"
-              alt="Oficina de abogado Guillermo Naum"
-              className="relative mx-auto w-full max-w-lg rounded-2xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:ml-0"
-            />
+            <div className="relative mx-auto w-full max-w-lg sm:w-[57rem] md:-ml-4 lg:ml-0">
+              <div className="rounded-2xl shadow-xl ring-1 ring-gray-400/10 overflow-hidden bg-gradient-to-br from-primary/5 via-primary/10 to-gray-100 p-8">
+                <div className="aspect-[4/3] rounded-xl bg-white/80 backdrop-blur-sm p-8 flex items-center justify-center">
+                  <div className="text-center">
+                    <Scale className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <p className="text-lg font-serif text-gray-700">Dr. Guillermo Naum</p>
+                    <p className="text-sm text-gray-500">Abogado - Mat. Profesional</p>
+                  </div>
+                </div>
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  {stats.map((stat) => (
+                    <div key={stat.name} className="text-center p-3 rounded-lg bg-white/60 backdrop-blur-sm">
+                      <stat.icon className="h-5 w-5 text-primary mx-auto mb-1" />
+                      <div className="text-xl font-bold text-gray-900">{stat.value}</div>
+                      <div className="text-xs text-gray-500">{stat.name}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

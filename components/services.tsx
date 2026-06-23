@@ -53,21 +53,24 @@ export default function Services() {
           {services.map((service, index) => (
             <ParallaxScroll key={service.name}>
               <FadeIn delay={0.1 * (index + 1)}>
-                <motion.div whileHover={{ scale: 1.02 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                  <Card className="h-full transition-all duration-300 hover:shadow-lg group">
+                <motion.div
+                  whileHover={{ scale: 1.03, y: -4 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Card className="h-full transition-all duration-300 hover:shadow-2xl group border-2 hover:border-primary/20">
                     <CardHeader>
                       <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 transition-all duration-300 group-hover:from-primary/20 group-hover:to-primary/10 group-hover:shadow-lg"
                       >
-                        <service.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                        <service.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
                       </motion.div>
-                      <CardTitle className="transition-colors duration-300 group-hover:text-primary">
+                      <CardTitle className="text-xl transition-colors duration-300 group-hover:text-primary">
                         {service.name}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-base">{service.description}</CardDescription>
+                      <CardDescription className="text-base leading-relaxed">{service.description}</CardDescription>
                     </CardContent>
                   </Card>
                 </motion.div>

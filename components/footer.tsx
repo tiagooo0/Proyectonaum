@@ -1,5 +1,7 @@
 import Link from "next/link"
-import { Facebook, Instagram, MessageCircle, Mail } from "lucide-react"
+import Image from "next/image";
+
+import { Facebook, Instagram, MessageCircle, Mail, Star } from "lucide-react"
 
 const footerNavigation = {
   servicios: [
@@ -42,12 +44,18 @@ const footerNavigation = {
       href: "mailto:gnaum@coop5.com.ar",
       icon: Mail,
     },
+    {
+      name: "Google",
+      href: "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID",
+      icon: Star,
+    },
   ],
   contacto: {
     direccion: "Calle Tucumán 747, Jesús María, Córdoba",
     telefono: "+54 9 3525 53-7118",
     email: "gnaum@coop5.com.ar",
     horario: "Lunes a Viernes: 9:00 a 12:00 y 17:00 a 20:00",
+    googleMaps: "https://maps.google.com/?q=Calle+Tucumán+747,+Jesús+María,+Córdoba,+Argentina",
   },
 }
 
@@ -58,11 +66,20 @@ export default function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <Link href="/" className="flex items-center">
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">GN</span>
-              </div>
-              <span className="ml-3 text-xl font-bold text-white">Dr. Guillermo Naum</span>
-            </Link>
+  <div className="h-10 w-10 rounded-full overflow-hidden">
+    <Image
+      src="/naumLogoNav.png"
+      alt="Logo Dr. Guillermo Naum"
+      width={40}
+      height={40}
+      className="object-cover w-full h-full"
+    />
+  </div>
+
+  <span className="ml-3 text-xl font-bold text-white">
+    Dr. Guillermo Naum
+  </span>
+</Link>
             <p className="text-sm leading-6">Brindando servicios legales excepcionales con integridad y dedicación.</p>
             <div className="flex space-x-6">
               {footerNavigation.social.map((item) => (
@@ -82,6 +99,14 @@ export default function Footer() {
               <p className="text-gray-400">{footerNavigation.contacto.direccion}</p>
               <p className="text-gray-400">{footerNavigation.contacto.telefono}</p>
               <p className="text-gray-400">{footerNavigation.contacto.horario}</p>
+              <a
+                href={footerNavigation.contacto.googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors text-xs mt-2 inline-block"
+              >
+                Ver en Google Maps &rarr;
+              </a>
             </div>
           </div>
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
